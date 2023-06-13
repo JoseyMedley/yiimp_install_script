@@ -61,8 +61,8 @@
     sudo apt -y update
     sudo apt -y upgrade
     sudo apt -y autoremove
-    sudo apt-get install -y software-properties-common
-    sudo apt -y install dialog python3 python3-pip acl nano apt-transport-https
+    sudo apt -y install software-properties-common
+    sudo apt -y install dialog python3 python3-pip acl apt-transport-https
     echo -e "$GREEN Done...$COL_RESET"
 
 
@@ -110,8 +110,8 @@
 
     if [ -f /usr/sbin/apache2 ]; then
     echo -e "Removing apache..."
-    sudo apt-get -y purge apache2 apache2-*
-    sudo apt-get -y --purge autoremove
+    sudo apt -y purge apache2 apache2-*
+    sudo apt -y --purge autoremove
     fi
 
     sudo apt -y install nginx
@@ -167,23 +167,13 @@
     sleep 3
 
     source conf/pool.conf
-    if [ ! -f /etc/apt/sources.list.d/ondrej-php-bionic.list ]; then
     sudo add-apt-repository -y ppa:ondrej/php
-    fi
     sudo apt -y update
 
-    if [[ ("$DISTRO" == "16") ]]; then
-    sudo apt -y install php7.3-fpm php7.3-opcache php7.3 php7.3-common php7.3-gd php7.3-mysql php7.3-imap php7.3-cli \
-    php7.3-cgi php-pear php-auth imagemagick libruby php7.3-curl php7.3-intl php7.3-pspell mcrypt\
-    php7.3-recode php7.3-sqlite3 php7.3-tidy php7.3-xmlrpc php7.3-xsl memcached php-memcache php-imagick php-gettext php7.3-zip php7.3-mbstring
-    #sudo phpenmod mcrypt
-    #sudo phpenmod mbstring
-    else
     sudo apt -y install php7.3-fpm php7.3-opcache php7.3 php7.3-common php7.3-gd php7.3-mysql php7.3-imap php7.3-cli \
     php7.3-cgi php-pear imagemagick libruby php7.3-curl php7.3-intl php7.3-pspell mcrypt\
     php7.3-recode php7.3-sqlite3 php7.3-tidy php7.3-xmlrpc php7.3-xsl memcached php7.3-memcache php7.3-memcached php-imagick php-gettext php7.3-zip php7.3-mbstring \
     libpsl-dev libnghttp2-dev
-    fi
     sleep 5
     sudo systemctl start php7.3-fpm
     sudo systemctl status php7.3-fpm | sed -n "1,3p"
@@ -196,7 +186,7 @@
     # Installing other needed files
     echo
     echo
-    echo -e "$CYAN => Installing other needed files : $COL_RESET"
+    echo -e "$CYAN => Installing other needed packages : $COL_RESET"
     echo
     sleep 3
 
@@ -372,14 +362,14 @@
     # Generating Random Password for stratum
     blckntifypass=`cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1`
 
-    # Compil Blocknotify
+    # Compile Blocknotify
     cd ~
     git clone https://github.com/Kudaraidee/yiimp.git
     cd $HOME/yiimp/blocknotify
     sudo sed -i 's/tu8tu5/'$blckntifypass'/' blocknotify.cpp
     make -j$((`nproc`+1))
 
-    # Compil Stratum
+    # Compile Stratum
     cd $HOME/yiimp/stratum/
     git submodule init && git submodule update
     make -C algos
