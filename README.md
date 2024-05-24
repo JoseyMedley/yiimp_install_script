@@ -4,9 +4,9 @@ Official Yiimp (used in this script for Yiimp Installation): https://github.com/
 
 ---
 
-## Install script for yiimp on Ubuntu Server 16.04 / 18.04 (use Tpruvot's Yiimp)
+## Install script for yiimp on Debian Bookworm
 
-USE THIS SCRIPT ON FRESH INSTALL UBUNTU Server 16.04 / 18.04 !
+USE THIS SCRIPT ON FRESH INSTALL DEBIAN BOOKWORM !
 
 Connect on your VPS =>
 
@@ -19,7 +19,7 @@ Connect on your VPS =>
 - exit
 - su - pool
 - sudo apt -y install git
-- git clone https://github.com/Kudaraidee/yiimp_install_script.git
+- git clone https://github.com/JoseyMedley/yiimp_install_script.git
 - cd yiimp_install_scrypt/
 - bash install.sh (DO NOT RUN THE SCRIPT AS ROOT or SUDO)
 - At the end, you MUST REBOOT to finalize installation...
