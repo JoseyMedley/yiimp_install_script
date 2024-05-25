@@ -1147,9 +1147,10 @@
     sudo chmod 775 /var/yiimp -R
 
 
-    #Add to contrab screen-scrypt
+    #Add to crontab screen-scrypt and daily auto update/reboot
     (crontab -l 2>/dev/null; echo "@reboot sleep 20 && /etc/screen-scrypt.sh") | crontab -
-
+    (sudo crontab -l 2>/dev/null; sudo echo "4 20 * * * sudo apt update; sudo apt upgrade -y; sudo apt autoremove -y; sudo reboot;") | sudo crontab -
+    
     #fix error screen main "service"
     sudo sed -i 's/service $webserver start/sudo service $webserver start/g' /var/web/yaamp/modules/thread/CronjobController.php
     sudo sed -i 's/service nginx stop/sudo service nginx stop/g' /var/web/yaamp/modules/thread/CronjobController.php
@@ -1161,10 +1162,6 @@
     #Misc
     sudo mv $HOME/yiimp/ $HOME/yiimp-install-only-do-not-run-commands-from-this-folder
     sudo rm -rf /var/log/nginx/*
-
-    #Hold update OpenSSL
-    #If you want remove the hold : sudo apt-mark unhold openssl
-    sudo apt-mark hold openssl
 
     #Restart service
     sudo systemctl restart cron.service
@@ -1208,8 +1205,8 @@
     echo -e "$RED***************************************************$COL_RESET"
     echo -e "$RED YOU MUST REBOOT NOW  TO FINALIZE INSTALLATION !!! $COL_RESET"
     echo -e "$RED***************************************************$COL_RESET"
-    echo -e "$RED if u have white page blank on site check          $COL_RESET"
+    echo -e "$RED if youu have white page blank on site check       $COL_RESET"
     echo -e "$RED php8.3-memcache | php8.3-memcached | php8.3-fpm   $COL_RESET"
-    echo -e "$RED try just restart them first...                    $COL_RESET"
+    echo -e "$RED try to restart them first...                      $COL_RESET"
     echo -e "$RED***************************************************$COL_RESET"
     echo
