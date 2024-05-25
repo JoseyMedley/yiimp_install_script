@@ -2,10 +2,11 @@
 ################################################################################
 # Original Author:   Kudaraidee
 # Modified by : Delari (https://github.com/xavatar/yiimp_install_scrypt)
+# Modified for Debian by : Josey Medley (https://github.com/JoseyMedley/yiimp_install_script)
 
 # Program:
-#   Install yiimp on Ubuntu 16.04/18.04 running Nginx, MariaDB, and php7.3
-#   v0.3 (update May, 2022)
+#   Install yiimp on Debian Bookwork running Nginx, MariaDB, and php7.3
+#   v0.4 (update May, 2024)
 #
 ################################################################################
 
@@ -44,14 +45,14 @@
     clear
     echo
     echo -e "$GREEN************************************************************************$COL_RESET"
-    echo -e "$GREEN Yiimp Install Script v0.3 $COL_RESET"
-    echo -e "$GREEN Install yiimp on Ubuntu 16.04/18.04 running Nginx, MariaDB, and php7.3 $COL_RESET"
+    echo -e "$GREEN Yiimp Install Script v0.4 $COL_RESET"
+    echo -e "$GREEN Install yiimp on Ubuntu 12 running Nginx, MariaDB, and php7.3 $COL_RESET"
     echo -e "$GREEN************************************************************************$COL_RESET"
     echo
     sleep 3
 
 
-    # Update package and Upgrade Ubuntu
+    # Update package and Upgrade Debian
     echo
     echo
     echo -e "$CYAN => Updating system and installing required packages :$COL_RESET"
@@ -90,16 +91,6 @@
     read -e -p "Install Fail2ban? [Y/n] : " install_fail2ban
     read -e -p "Install UFW and configure ports? [Y/n] : " UFW
     read -e -p "Install LetsEncrypt SSL? IMPORTANT! You MUST have your domain name pointed to this server prior to running the script!! [Y/n]: " ssl_install
-
-
-    # Switch Aptitude
-    #echo
-    #echo -e "$CYAN Switching to Aptitude $COL_RESET"
-    #echo
-    #sleep 3
-    #sudo apt -y install aptitude
-    #echo -e "$GREEN Done...$COL_RESET $COL_RESET"
-
 
     # Installing Nginx
     echo
@@ -745,7 +736,7 @@
 
     sudo ln -s /etc/nginx/sites-available/$server_name.conf /etc/nginx/sites-enabled/$server_name.conf
     sudo ln -s /var/web /var/www/$server_name/html
-	sudo ln -s /var/stratum/config /var/web/list-algos
+    sudo ln -s /var/stratum/config /var/web/list-algos
     sudo systemctl reload php7.3-fpm.service
     sudo systemctl restart nginx.service
     echo -e "$GREEN Done...$COL_RESET"
@@ -806,7 +797,7 @@
             # strengthen ssl security
             ssl_certificate /etc/letsencrypt/live/'"${server_name}"'/fullchain.pem;
             ssl_certificate_key /etc/letsencrypt/live/'"${server_name}"'/privkey.pem;
-            ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+            ssl_protocols TLSv1.2;
             ssl_prefer_server_ciphers on;
             ssl_session_cache shared:SSL:10m;
             ssl_ciphers "EECDH+AESGCM:EDH+AESGCM:ECDHE-RSA-AES128-GCM-SHA256:AES256+EECDH:DHE-RSA-AES128-GCM-SHA256:AES256+EDH:ECDHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-RSA-AES128-SHA256:ECDHE-RSA-AES256-SHA:ECDHE-RSA-AES128-SHA:DHE-RSA-AES256-SHA256:DHE-RSA-AES128-SHA256:DHE-RSA-AES256-SHA:DHE-RSA-AES128-SHA:ECDHE-RSA-DES-CBC3-SHA:EDH-RSA-DES-CBC3-SHA:AES256-GCM-SHA384:AES128-GCM-SHA256:AES256-SHA256:AES128-SHA256:AES256-SHA:AES128-SHA:DES-CBC3-SHA:HIGH:!aNULL:!eNULL:!EXPORT:!DES:!MD5:!PSK:!RC4";
@@ -1097,7 +1088,7 @@
 
     // Sample custom stratum ports
     $configCustomPorts = array(
-    //	'"'"'x11'"'"' => 7000,
+    //	'"'"'scrypt'"'"' => 3333,
     );
 
     // mBTC Coefs per algo (default is 1.0)
@@ -1193,7 +1184,7 @@
     echo
     echo
     echo -e "$GREEN***************************$COL_RESET"
-    echo -e "$GREEN Yiimp Install Script v0.2 $COL_RESET"
+    echo -e "$GREEN Yiimp Install Script v0.4 $COL_RESET"
     echo -e "$GREEN Finish !!! $COL_RESET"
     echo -e "$GREEN***************************$COL_RESET"
     echo
