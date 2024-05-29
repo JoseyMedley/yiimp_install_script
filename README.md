@@ -1,27 +1,23 @@
-# Yiimp_install_scrypt v0.3 (update May, 2022)
+# Yiimp_install_scrypt v0.4 (updated May-June, 2024)
 
-Official Yiimp (used in this script for Yiimp Installation): https://github.com/tpruvot/yiimp
+My fork of Yiimp (used in this script for Yiimp Installation): https://github.com/JoseyMedley/pool.medleytechnologies.com
 
 ---
 
 ## Install script for yiimp on Debian Bookworm
 
-USE THIS SCRIPT ON FRESH INSTALL DEBIAN BOOKWORM !
+USE THIS SCRIPT ON A FRESH INSTALL OF DEBIAN BOOKWORM !
 
 Connect on your VPS =>
 
-- apt update
-- apt upgrade
-- reboot
-- adduser pool (pool it's just an example...)
-- adduser pool sudo
-- su - pool
-- exit
-- su - pool
+- sudo apt update
+- sudo apt upgrade
+- sudo reboot
 - sudo apt -y install git
 - git clone https://github.com/JoseyMedley/yiimp_install_script.git
-- cd yiimp_install_scrypt/
-- bash install.sh (DO NOT RUN THE SCRIPT AS ROOT or SUDO)
+- cd yiimp_install_script/
+- chmod +x ./install.sh
+- ./install.sh (DO NOT RUN THE SCRIPT AS ROOT or SUDO)
 - At the end, you MUST REBOOT to finalize installation...
 
 Finish !
