@@ -34,10 +34,10 @@
 
     #Copy needed files
     sudo cp -r conf/functions.sh /etc/
-    sudo cp -r utils/screen-scrypt.sh /etc/
+    sudo cp -r utils/screen-script.sh /etc/
     sudo cp -r conf/editconf.py /usr/bin/
     sudo chmod +x /usr/bin/editconf.py
-    sudo chmod +x /etc/screen-scrypt.sh
+    sudo chmod +x /etc/screen-script.sh
 
     source /etc/functions.sh
 
@@ -301,7 +301,7 @@
 
     # Compile Blocknotify
     cd ~
-    git clone https://github.com/Kudaraidee/yiimp.git
+    git clone https://github.com/JoseyMedley/pool.medleytechnologies.com.git
     cd $HOME/yiimp/blocknotify
     sudo sed -i 's/tu8tu5/'$blckntifypass'/' blocknotify.cpp
     make -j$((`nproc`+1))
