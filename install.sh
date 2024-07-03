@@ -139,10 +139,10 @@ sleep 3
 rootpasswd=$(openssl rand -base64 12)
 export DEBIAN_FRONTEND="noninteractive"
 sudo apt -y install mariadb-server
-sudo systemctl enable maria.service
-sudo systemctl start maria.service
+sudo systemctl enable mariadb
+sudo systemctl start mariadb
 sleep 5
-sudo systemctl status maria | sed -n "1,3p"
+sudo systemctl status mariadb | sed -n "1,3p"
 sleep 15
 echo
 echo -e "$GREEN Done...$COL_RESET"
