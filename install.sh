@@ -6,7 +6,7 @@
 
 # Program:
 #   Install yiimp on Debian Bookwork running Nginx, MariaDB, and php8.3
-#   v0.4 (update May, 2024)
+#   v0.4 (updated July, 2024)
 #
 ################################################################################
 
@@ -138,7 +138,7 @@ sleep 3
 # Create random password
 rootpasswd=$(openssl rand -base64 12)
 export DEBIAN_FRONTEND="noninteractive"
-sudo apt -y install maria-server
+sudo apt -y install mariadb-server
 sudo systemctl enable maria.service
 sudo systemctl start maria.service
 sleep 5
