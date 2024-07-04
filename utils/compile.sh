@@ -1,8 +1,8 @@
 #!/bin/bash
 ################################################################################
 # Original Author: crombiecrunch
-# Current Author: Xavatar
-# Web: https://www.xavatar.com
+# Old Author: Xavatar
+# Current Author: JoseyMedley
 #
 # Program:
 #   After entering coin name and github link automatically build coin
@@ -39,7 +39,7 @@ if [[ ! -e '$coin' ]]; then
     sudo  git clone $git_hub  $coin
 elif [[ ! -d ~$CoinBuilds/$coin ]]; then
     output "Coinbuilds/$coin already exists.... Skipping" 1>&2
-    output "Can not continue"
+    output "Cannot continue"
     exit 0
 fi
 
@@ -49,22 +49,22 @@ if [ -f autogen.sh ]; then
 		output " "
         output "Auto Compilation Starting "
 		output " "
-		output "Starting ./autogen.sh"
+		output "Running ing ./autogen.sh"
 		output " "
 		sudo chmod +x ./autogen.sh
 		sudo ./autogen.sh
 		output " "
-		output "Starting ./configure"
+		output "Running ./configure"
 		output " "
 		sudo chmod +x ./configure
 		sudo ./configure CPPFLAGS="-I/usr/local/include"
 		sudo chmod +x share/genbuild.sh
 		output " "
-		output "Starting make"
+		output "Running make"
 		output " "
         sudo make
 		output " "
-        output "$coin_name finished and can be found in CoinBuilds/$coin/src/ Make sure you sudo strip Coind and coin-cli if it exists, copy to /usr/bin"
+        output "$coin_name finished and can be found in CoinBuilds/$coin/src/ Make sure you sudo strip coind and coin-cli if it exists, copy to /usr/bin"
 		output " "
 else
         cd src
@@ -76,7 +76,7 @@ if [ -f rpcrawtransaction.cpp ]; then
 	
 if [[ ! -e 'obj' ]]; then
 	output " "
-	output "Creation directory obj"
+	output "Creating directory obj"
 	output " "
 	sudo mkdir obj
 elif [[ ! -d 'obj' ]]; then
@@ -85,7 +85,7 @@ fi
 
 if [ -d 'leveldb' ]; then
 	output " "
-	output "Compilation libleveldb.a libmemenv.a"
+	output "Compiling libleveldb.a libmemenv.a"
 	output " "
 	cd leveldb
 	sudo chmod +x build_detect_platform
