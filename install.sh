@@ -5,11 +5,11 @@
 # Modified for Debian by : Josey Medley (https://github.com/JoseyMedley/yiimp_install_script)
 
 # Program:
-#   Install yiimp on Debian Bookwork running Nginx, MariaDB, and php8.3
+#   Yiimp Install Script	
+#   Install Yiimp on Debian Bookworm running Nginx, MariaDB, and php8.3
 #   v0.4 (updated July, 2024)
 #
 ################################################################################
-
 
 output() {
     printf "\E[0;33;40m"
@@ -105,10 +105,10 @@ fi
 
 sudo apt -y install nginx
 sudo rm /etc/nginx/sites-enabled/default
-sudo systemctl start nginx.service
-sudo systemctl enable nginx.service
-sudo systemctl start cron.service
-sudo systemctl enable cron.service
+sudo systemctl start nginx
+sudo systemctl enable nginx
+sudo systemctl start cron
+sudo systemctl enable cron
 sleep 5
 sudo systemctl status nginx | sed -n "1,3p"
 sleep 15
@@ -193,13 +193,11 @@ echo -e "$CYAN => Installing Package to compile crypto currency $COL_RESET"
 echo
 sleep 3
 
-sudo apt -y install software-properties-common build-essential
+sudo apt -y install build-essential
 sudo apt -y install libtool autotools-dev automake pkg-config libssl-dev libevent-dev bsdmainutils cmake libboost-all-dev zlib1g-dev libz-dev libseccomp-dev libcap-dev libminiupnpc-dev gettext
 sudo apt -y install libminiupnpc-dev libzmq5 libzstd-dev libbrotli-dev libssh2-1-dev
 sudo apt -y install libcanberra-gtk-module libqrencode-dev libzmq3-dev
 sudo apt -y install libqt5gui5 libqt5core5a libqt5webkit5-dev libqt5dbus5 qttools5-dev qttools5-dev-tools libprotobuf-dev protobuf-compiler
-sudo add-apt-repository -y ppa:bitcoin/bitcoin
-sudo apt -y update  sudo apt install libdb5.3++ 
 sudo apt -y install libdb5.3 libdb5.3++ libdb5.3++-dev
 echo -e "$GREEN Done...$COL_RESET"
 
@@ -222,6 +220,13 @@ echo $root_email > sudo tee --append ~/.email
 echo $root_email > sudo tee --append ~/.forward
 
 if [[ ("$send_email" == "y" || "$send_email" == "Y" || "$send_email" == "") ]]; then
+#TODO: Need testing
+# Test Email
+echo
+echo
+echo -e "$CYAN => Testing to see if server emails are sent $COL_RESET"
+echo
+sleep 3
 echo "This is a mail test for the SMTP Service." > sudo tee --append /tmp/email.message
 echo "You should receive this !" >> sudo tee --append /tmp/email.message
 echo "" >> sudo tee --append /tmp/email.message
@@ -261,7 +266,6 @@ sudo ufw --force enable
 sleep 5
 sudo systemctl status ufw | sed -n "1,3p"
 fi
-
 
 echo
 echo -e "$GREEN Done...$COL_RESET"
@@ -681,8 +685,8 @@ location ~ /phpmyadmin/(.+\.php)$ {
 sudo ln -s /etc/nginx/sites-available/$server_name.conf /etc/nginx/sites-enabled/$server_name.conf
 sudo ln -s /var/web /var/www/$server_name/html
 sudo ln -s /var/stratum/config /var/web/list-algos
-sudo systemctl reload php8.3-fpm.service
-sudo systemctl restart nginx.service
+sudo systemctl reload php8.3-fpm
+sudo systemctl restart nginx
 echo -e "$GREEN Done...$COL_RESET"
 
 
@@ -810,8 +814,8 @@ location ~ /phpmyadmin/(.+\.php)$ {
 echo -e "$GREEN Done...$COL_RESET"
 
 fi
-sudo systemctl reload php8.3-fpm.service
-sudo systemctl restart nginx.service
+sudo systemctl reload php8.3-fpm
+sudo systemctl restart nginx
 fi
 
 
@@ -1108,14 +1112,14 @@ sudo mv $HOME/pool.medleytechnologies.com/ $HOME/yiimp-install-only-do-not-run-c
 sudo rm -rf /var/log/nginx/*
 
 #Restart service
-sudo systemctl restart cron.service
+sudo systemctl restart cron
 sudo systemctl restart mysql
 sudo systemctl status mysql | sed -n "1,3p"
 sudo systemctl restart nginx.service
 sudo systemctl status nginx | sed -n "1,3p"
-sudo systemctl restart php8.3-fpm.service
+sudo systemctl restart php8.3-fpm
 sudo systemctl status php8.3-fpm | sed -n "1,3p"
-
+sudo systemctl enable php8.3-fpm
 
 echo
 echo -e "$GREEN Done...$COL_RESET"
