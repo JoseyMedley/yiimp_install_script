@@ -10,22 +10,17 @@ USE THIS SCRIPT ON A FRESH INSTALL OF DEBIAN BOOKWORM !
 
 Connect on your VPS =>
 
-- sudo apt update
-- sudo apt upgrade
-- sudo reboot
-- sudo apt -y install git
-- git clone https://github.com/JoseyMedley/yiimp_install_script.git
-- cd yiimp_install_script/
-- chmod +x ./install.sh
+- sudo apt update && sudo apt upgrade -y && sudo apt install git -y && sudo reboot
+- git clone https://github.com/JoseyMedley/yiimp_install_script.git && cd yiimp_install_script/ && chmod +x ./install.sh
 - ./install.sh (DO NOT RUN THE SCRIPT AS ROOT or SUDO)
 - At the end, you MUST REBOOT to finalize installation...
 
 Finish !
 
 - Go http://xxx.xxx.xxx.xxx or https://xxx.xxx.xxx.xxx (if you have chosen LetsEncrypt SSL). Enjoy !
-- Go http://xxx.xxx.xxx.xxx/site/myadmin or https://xxx.xxx.xxx.xxx/site/myadmin to access Panel Admin
+- Go http://xxx.xxx.xxx.xxx/site/myadmin or https://xxx.xxx.xxx.xxx/site/myadmin from the admin IP set in the script to access the admin panel
 
-If you are issue after installation (nginx,mariadb... not found), use this script : bash install-debug.sh (watch the log during installation)
+If you have issues after installation (nginx,mariadb... not found), use this script : bash install-debug.sh (watch the log during installation)
 
 ###### :bangbang: **YOU MUST UPDATE THE FOLLOWING FILES :**
 
