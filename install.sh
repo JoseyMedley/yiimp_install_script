@@ -1077,6 +1077,9 @@ sudo find /var/web -type d -exec chmod 775 {} +
 sudo find /var/web -type f -exec chmod 664 {} +
 sudo chgrp www-data /var/web -R
 sudo chmod g+w /var/web -R
+sudo chmod +x /var/web/loop2.sh
+sudo chmod +x /var/web/main.sh
+sudo chmod +x /var/web/blocks.sh
 
 sudo mkdir /var/log/yiimp
 sudo touch /var/log/yiimp/debug.log
@@ -1092,7 +1095,7 @@ sudo chmod 775 /var/yiimp -R
 
 
 #Add screen-script to crontab and daily auto update/reboot
-(crontab -l 2>/dev/null; echo "@reboot sleep 20 && /etc/screen-script.sh") | crontab -
+(sudo crontab -l 2>/dev/null; sudo echo "@reboot sleep 20 && /etc/screen-script.sh") | sudo crontab -
 (sudo crontab -l 2>/dev/null; sudo echo "4 20 * * * sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y && sudo reboot") | sudo crontab -
 
 #fix error screen main "service"
