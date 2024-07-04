@@ -469,8 +469,8 @@ location ~ /phpmyadmin/(.+\.php)$ {
 sudo ln -s /etc/nginx/sites-available/$server_name.conf /etc/nginx/sites-enabled/$server_name.conf
 sudo ln -s /var/web /var/www/$server_name/html
 sudo ln -s /var/stratum/config /var/web/list-algos
-sudo systemctl reload php8.3-fpm.service
-sudo systemctl restart nginx.service
+sudo systemctl reload php8.3-fpm
+sudo systemctl restart nginx
 echo -e "$GREEN Done...$COL_RESET"
 
 if [[ ("$ssl_install" == "y" || "$ssl_install" == "Y" || "$ssl_install" == "") ]]; then
@@ -593,8 +593,8 @@ location ~ /phpmyadmin/(.+\.php)$ {
 ' | sudo -E tee /etc/nginx/sites-available/$server_name.conf >/dev/null 2>&1
 fi
 
-sudo systemctl reload php8.3-fpm.service
-sudo systemctl restart nginx.service
+sudo systemctl reload php8.3-fpm
+sudo systemctl restart nginx
 echo -e "$GREEN Done...$COL_RESET"
 
 
@@ -1115,7 +1115,7 @@ sudo rm -rf /var/log/nginx/*
 sudo systemctl restart cron
 sudo systemctl restart mysql
 sudo systemctl status mysql | sed -n "1,3p"
-sudo systemctl restart nginx.service
+sudo systemctl restart nginx
 sudo systemctl status nginx | sed -n "1,3p"
 sudo systemctl restart php8.3-fpm
 sudo systemctl status php8.3-fpm | sed -n "1,3p"
