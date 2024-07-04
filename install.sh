@@ -65,11 +65,7 @@ sudo apt -y install software-properties-common
 sudo apt -y install dialog python3 python3-pip acl apt-transport-https cron
 echo -e "$GREEN Done...$COL_RESET"
 
-
-source conf/prerequisite.sh
-sleep 3
 source conf/getip.sh
-
 
 echo 'PUBLIC_IP='"${PUBLIC_IP}"'
 PUBLIC_IPV6='"${PUBLIC_IPV6}"'
