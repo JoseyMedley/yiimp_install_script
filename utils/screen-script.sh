@@ -1,10 +1,5 @@
 #!/bin/bash
- LOG_DIR=/var/log/yiimp
- WEB_DIR=/var/web
- STRATUM_DIR=/var/stratum
- USR_BIN=/usr/bin
- 
- screen -dmS main bash $WEB_DIR/main.sh
- screen -dmS loop2 bash $WEB_DIR/loop2.sh
- screen -dmS blocks bash $WEB_DIR/blocks.sh
- screen -dmS debug tail -f $LOG_DIR/debug.log
+screen -dm -S main /var/web/main.sh
+screen -dm -S loop2 /var/web/loop2.sh
+screen -dm -S blocks /var/web/blocks.sh
+screen -dm -S debug tail -f /var/log/yiimp/debug.log
