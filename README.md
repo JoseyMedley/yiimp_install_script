@@ -24,9 +24,9 @@ If you have issues after installation (nginx,mariadb... not found), use this scr
 
 ###### :bangbang: **YOU MUST UPDATE THE FOLLOWING FILES :**
 
-- **/var/web/serverconfig.php :** update this file to include your public ip (line = YAAMP_ADMIN_IP) to access the admin panel (Put your PERSONNAL IP, NOT IP of your VPS). update with public keys from exchanges. update with other information specific to your server..
+- **/var/web/serverconfig.php :** update with public keys from exchanges and other information specific to your server.
 - **/etc/yiimp/keys.php :** update with secrect keys from the exchanges (not mandatory)
-- **If you want change 'AdminPanel' to access Panel Admin :** Edit this file "/var/web/yaamp/modules/site/SiteController.php" and Line 11 => change 'AdminPanel'
+- **If you want to change the admin panel location :** Edit this file "/var/web/yaamp/modules/site/SiteController.php" and Line 11 => change 'AdminPanel'
 
 ###### :bangbang: **IMPORTANT** :
 
