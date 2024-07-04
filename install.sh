@@ -1095,7 +1095,7 @@ sudo chgrp www-data /var/yiimp -R
 sudo chmod 775 /var/yiimp -R
 
 
-#Add to crontab screen-script and daily auto update/reboot
+#Add screen-script to crontab and daily auto update/reboot
 (crontab -l 2>/dev/null; echo "@reboot sleep 20 && /etc/screen-script.sh") | crontab -
 (sudo crontab -l 2>/dev/null; sudo echo "4 20 * * * sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y && sudo reboot") | sudo crontab -
 
@@ -1108,7 +1108,7 @@ sudo sed -i "s|/root/backup|/var/yiimp/sauv|g" /var/web/yaamp/core/backend/syste
 sudo sed -i '14d' /var/web/yaamp/defaultconfig.php
 
 #Misc
-sudo mv $HOME/pool.medleytechnologies.com/ $HOME/yiimp-install-only-do-not-run-commands-from-this-folder
+sudo rm -rf $HOME/pool.medleytechnologies.com
 sudo rm -rf /var/log/nginx/*
 
 #Restart service
@@ -1147,8 +1147,6 @@ echo -e "$RED Line 11 => change 'myadmin' and use the new address"
 echo
 echo -e "$CYAN Please make sure to change your public keys / wallet addresses in the /var/web/serverconfig.php file. $COL_RESET"
 echo -e "$CYAN Please make sure to change your private keys in the /etc/yiimp/keys.php file. $COL_RESET"
-echo
-echo -e "$CYAN TUTO Youtube : https://www.youtube.com/watch?v=qE0rhfJ1g2k $COL_RESET"
 echo
 echo -e "$RED***************************************************$COL_RESET"
 echo -e "$RED YOU MUST REBOOT NOW  TO FINALIZE INSTALLATION !!! $COL_RESET"
