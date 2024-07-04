@@ -17,10 +17,8 @@ Connect on your VPS =>
 
 Finish !
 
-- Go http://xxx.xxx.xxx.xxx or https://xxx.xxx.xxx.xxx (if you have chosen LetsEncrypt SSL). Enjoy !
-- Go http://xxx.xxx.xxx.xxx/site/myadmin or https://xxx.xxx.xxx.xxx/site/myadmin from the admin IP set in the script to access the admin panel
-
-If you have issues after installation (nginx,mariadb... not found), use this script : bash install-debug.sh (watch the log during installation)
+- Go to http://xxx.xxx.xxx.xxx or https://xxx.xxx.xxx.xxx (if you have chosen LetsEncrypt SSL). Enjoy !
+- Go to http://xxx.xxx.xxx.xxx/site/myadmin or https://xxx.xxx.xxx.xxx/site/myadmin from the admin IP set in the script to access the admin panel
 
 ###### :bangbang: **YOU MUST UPDATE THE FOLLOWING FILES :**
 
