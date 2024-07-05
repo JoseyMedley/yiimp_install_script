@@ -1027,7 +1027,6 @@ $configFixedPoolFeesSolo = array(
 '"'"'zr5'"'"' => 2.0,
 '"'"'scrypt'"'"' => 2.0,
 '"'"'sha256'"'"' => 2.0,
-
 );
 
 // Sample custom stratum ports
@@ -1061,7 +1060,6 @@ sudo sed -i 's/password = patofpaq/password = '$password2'/g' *.conf
 cd ~
 echo -e "$GREEN Done...$COL_RESET"
 
-
 # Final Directory permissions
 echo
 echo
@@ -1092,7 +1090,6 @@ sudo chmod 775 /var/stratum
 sudo mkdir -p /var/yiimp/sauv
 sudo chgrp www-data /var/yiimp -R
 sudo chmod 775 /var/yiimp -R
-
 
 #Add screen-script to crontab and daily auto update/reboot
 (sudo crontab -l 2>/dev/null; sudo echo "@reboot sleep 20 && /etc/screen-script.sh") | sudo crontab -
@@ -1141,17 +1138,17 @@ echo -e "$RED Yiimp at : http://"$server_name" (https... if SSL enabled)"
 echo -e "$RED Yiimp Admin at : http://"$server_name"/site/myadmin (https... if SSL enabled)"
 echo -e "$RED Yiimp phpMyAdmin at : http://"$server_name"/phpmyadmin (https... if SSL enabled)"
 echo
-echo -e "$RED If you want change 'myadmin' to access Panel Admin : Edit this file : /var/web/yaamp/modules/site/SiteController.php"
+echo -e "$RED If you want change the admin panel url edit this file : /var/web/yaamp/modules/site/SiteController.php"
 echo -e "$RED Line 11 => change 'myadmin' and use the new address"
 echo
 echo -e "$CYAN Please make sure to change your public keys / wallet addresses in the /var/web/serverconfig.php file. $COL_RESET"
 echo -e "$CYAN Please make sure to change your private keys in the /etc/yiimp/keys.php file. $COL_RESET"
 echo
 echo -e "$RED***************************************************$COL_RESET"
-echo -e "$RED YOU MUST REBOOT NOW  TO FINALIZE INSTALLATION !!! $COL_RESET"
+echo -e "$RED YOU MUST REBOOT NOW TO FINALIZE INSTALLATION !!! $COL_RESET"
 echo -e "$RED***************************************************$COL_RESET"
-echo -e "$RED if youu have white page blank on site check       $COL_RESET"
+echo -e "$RED If the site shows a blank white page              $COL_RESET"
 echo -e "$RED php8.3-memcache | php8.3-memcached | php8.3-fpm   $COL_RESET"
-echo -e "$RED try to restart them first...                      $COL_RESET"
+echo -e "$RED Try restarting them first and check the db install$COL_RESET"
 echo -e "$RED***************************************************$COL_RESET"
 echo
